@@ -15,6 +15,19 @@ const PRIVATE_APP_ACCESS = '';
 // * Code for Route 1 goes here
 app.get("/", async (req, res) => {
 
+    const hobbies = 'https://api.hubapi.com/crm/v3/objects/hobbies?limit=10&properties=name&properties=type&properties=description&archived=false';
+    
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    }
+    try {
+        const resp = await axios.get(hobbies, { headers });
+        const data = resp.data.results;
+        res.render('hobbies', { title: 'Homepage Hobbies | HubSpot APIs', data });      
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 
@@ -29,7 +42,6 @@ app.get("/update-cobj", async (req, res) => {
 
 // * Code for Route 3 goes here
 app.post("/update-cobj", async (req, res) => {
-
 
 });
 
