@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    title= `${title}`
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .form_wrapper
+        h1 Create New CRM Record
+        form(method="POST")
+            label(for="name") Name:
+            input(type="text", id="name", name="name", required)
+            br
+            label(for="type") Type:
+            input(type="text", id="type", name="type", required)
+            br
+            label(for="description") Description:
+            input(type="text", id="description", name="description", required)
+            br
+            input(type="submit" value="Submit")
+
+            a(href="/") Go to the record list
