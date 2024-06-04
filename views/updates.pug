@@ -5,7 +5,8 @@ html(lang="en")
     link(rel="stylesheet", href="/css/style.css")
   body
     .form_wrapper
-        h1 Create New CRM Record
+        h1 Create New Record
+        a(href="/") Go to the record list 
         form(method="POST")
             label(for="name") Name:
             input(type="text", id="name", name="name", required)
@@ -18,4 +19,4 @@ html(lang="en")
             br
             input(type="submit" value="Submit")
 
-            a(href="/") Go to the record list
+            
