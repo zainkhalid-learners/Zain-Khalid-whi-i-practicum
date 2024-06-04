@@ -47,7 +47,29 @@ app.get("/update-cobj", async (req, res) => {
 
 // * Code for Route 3 goes here
 app.post("/update-cobj", async (req, res) => {
+    const create = {
+        properties: {
+            "name": req.body.name,
+            "type": req.body.type,
+            "description": req.body.description
+        }
+    }
 
+    console.log("log: ", create)
+
+    const createHobby = `https://api.hubapi.com/crm/v3/objects/hobbies`;
+
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    };
+
+    try { 
+        await axios.post(createHobby, create, { headers } );
+        res.redirect('/');
+    } catch(err) {
+        console.error("From POST update-cobj: ",err);
+    }
 
 });
 
